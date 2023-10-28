@@ -53,7 +53,7 @@ def _conv_linear(
         [filter_size[0], filter_size[1], total_arg_size_depth, out_depth],
         dtype=dtype,
         initializer=kernel_initializer,
-        regularizer=tf.contrib.layers.l2_regularizer(kernel_regularizer),
+        regularizer=tf.keras.regularizers.l2(kernel_regularizer),
     )
     if len(args) == 1:
         res = tf.nn.conv2d(args[0], kernel, strides=[1, 1, 1, 1], padding="SAME")
@@ -70,7 +70,7 @@ def _conv_linear(
         [out_depth],
         dtype=dtype,
         initializer=bias_initializer,
-        regularizer=tf.contrib.layers.l2_regularizer(bias_regularizer),
+        regularizer=tf.keras.regularizers.l2(bias_regularizer),
     )
     return res + bias_term
 
@@ -133,14 +133,14 @@ def _ds_conv(
             [ksize[0], ksize[1], in_depth, ch_mult],
             dtype=dtype,
             initializer=kernel_initializer,
-            regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+            regularizer=tf.keras.regularizers.l2(weight_decay),
         )
         pointwise_filter = tf.get_variable(
             "pointwise_weights",
             [1, 1, in_depth * ch_mult, out_depth],
             dtype=dtype,
             initializer=kernel_initializer,
-            regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+            regularizer=tf.keras.regularizers.l2(weight_decay),
         )
 
         out = tf.nn.separable_conv2d(
@@ -265,7 +265,7 @@ def _get_regularizer(reg_scales=None):
 
         regs = []
         if scale_l2:
-            regs.append(tf.contrib.layers.l2_regularizer(scale_l2))
+            regs.append(tf.keras.regularizers.l2(scale_l2))
         if scale_l1:
             regs.append(tf.contrib.layers.l1_regularizer(scale_l1))
         if scale_lap:
@@ -636,7 +636,7 @@ def transform_func(inp, shape, weight_decay, ff_inpnm, reuse):
                 initializer=tf.zeros_initializer(),
                 shape=[in_depth, 6],
                 dtype=tf.float32,
-                regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+                regularizer=tf.keras.regularizers.l2(weight_decay),
                 name="weights",
             )
 
@@ -647,7 +647,7 @@ def transform_func(inp, shape, weight_decay, ff_inpnm, reuse):
                 initializer=tf.constant_initializer(value=initial_theta),
                 shape=[6],
                 dtype=tf.float32,
-                regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+                regularizer=tf.keras.regularizers.l2(weight_decay),
                 name="bias",
             )
 
@@ -708,7 +708,7 @@ def deconv(
                 initializer=tf.contrib.layers.xavier_initializer(),
                 shape=[ksize[0], ksize[1], in_ch, out_ch],
                 dtype=tf.float32,
-                regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+                regularizer=tf.keras.regularizers.l2(weight_decay),
                 name="weights",
             )
 
@@ -716,7 +716,7 @@ def deconv(
                 initializer=tf.zeros_initializer(),
                 shape=[out_ch],
                 dtype=tf.float32,
-                regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+                regularizer=tf.keras.regularizers.l2(weight_decay),
                 name="bias",
             )
 
@@ -755,7 +755,7 @@ def deconv(
                 initializer=tf.contrib.layers.xavier_initializer(),
                 shape=[ksize[0], ksize[1], out_ch, in_ch],
                 dtype=tf.float32,
-                regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+                regularizer=tf.keras.regularizers.l2(weight_decay),
                 name="weights",
             )
 
@@ -763,7 +763,7 @@ def deconv(
                 initializer=tf.zeros_initializer(),
                 shape=[out_ch],
                 dtype=tf.float32,
-                regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+                regularizer=tf.keras.regularizers.l2(weight_decay),
                 name="bias",
             )
 
@@ -1298,7 +1298,7 @@ def component_conv(
                     out_depth,
                 ],
                 dtype=tf.float32,
-                regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+                regularizer=tf.keras.regularizers.l2(weight_decay),
                 name="weights_basenet",
             )
         else:
@@ -1311,7 +1311,7 @@ def component_conv(
                     out_depth,
                 ],
                 dtype=tf.float32,
-                regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+                regularizer=tf.keras.regularizers.l2(weight_decay),
                 name="weights_" + str(w_idx),
             )
             w_idx += 1
@@ -1327,7 +1327,7 @@ def component_conv(
             initializer=const_init,
             shape=[out_depth],
             dtype=tf.float32,
-            regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+            regularizer=tf.keras.regularizers.l2(weight_decay),
             name="bias",
         )
     # ops
@@ -1405,7 +1405,7 @@ def conv_bn(
         initializer=model_tool.initializer(kernel_init, **kernel_init_kwargs),
         shape=[ksize[0], ksize[1], in_depth, out_depth],
         dtype=tf.float32,
-        regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+        regularizer=tf.keras.regularizers.l2(weight_decay),
         name="weights",
     )
 
@@ -1413,7 +1413,7 @@ def conv_bn(
         initializer=model_tool.initializer(kind="constant", value=bias),
         shape=[out_depth],
         dtype=tf.float32,
-        regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+        regularizer=tf.keras.regularizers.l2(weight_decay),
         name="bias",
     )
     # ops

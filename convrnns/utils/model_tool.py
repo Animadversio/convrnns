@@ -68,14 +68,14 @@ def groupnorm(
             dtype=tf.float32,
             initializer=initializer("constant", float(gamma_init)),
         )
-        # regularizer=tf.contrib.layers.l2_regularizer(weight_decay))
+        # regularizer=tf.keras.regularizers.l2(weight_decay))
         beta = tf.get_variable(
             "groupnorm_shift",
             shape=[1, 1, 1, C],
             dtype=tf.float32,
             initializer=initializer("constant", float(beta_init)),
         )
-        # regularizer=tf.contrib.layers.l2_regularizer(weight_decay))
+        # regularizer=tf.keras.regularizers.l2(weight_decay))
     else:
         gamma = tf.constant(gamma_init, dtype=tf.float32)
         beta = tf.constant(beta_init, dtype=tf.float32)
@@ -229,7 +229,7 @@ def conv(
         initializer=init,
         shape=[ksize[0], ksize[1], in_depth, out_depth],
         dtype=tf.float32,
-        regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+        regularizer=tf.keras.regularizers.l2(weight_decay),
         name="weights",
     )
 
@@ -239,7 +239,7 @@ def conv(
             initializer=init,
             shape=[out_depth],
             dtype=tf.float32,
-            regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+            regularizer=tf.keras.regularizers.l2(weight_decay),
             name="bias",
         )
     # ops
@@ -329,7 +329,7 @@ def conv_bnf(
         initializer=init,
         shape=[ksize[0], ksize[1], in_depth, out_depth],
         dtype=tf.float32,
-        regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+        regularizer=tf.keras.regularizers.l2(weight_decay),
         name="weights",
     )
 
@@ -356,7 +356,7 @@ def conv_bnf(
             initializer=init,
             shape=[out_depth],
             dtype=tf.float32,
-            regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+            regularizer=tf.keras.regularizers.l2(weight_decay),
             name="bias",
         )
         output = tf.nn.bias_add(conv, biases, name=name)
@@ -465,7 +465,7 @@ def depth_conv(
         initializer=init,
         shape=[ksize[0], ksize[1], in_depth, multiplier],
         dtype=tf.float32,
-        regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+        regularizer=tf.keras.regularizers.l2(weight_decay),
         name="weights",
     )
 
@@ -501,7 +501,7 @@ def depth_conv(
             initializer=init,
             shape=[out_depth],
             dtype=tf.float32,
-            regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+            regularizer=tf.keras.regularizers.l2(weight_decay),
             name="bias",
         )
         output = tf.nn.bias_add(output, biases, name=name)
@@ -552,7 +552,7 @@ def fc(
         initializer=init,
         shape=[in_depth, out_depth],
         dtype=tf.float32,
-        regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+        regularizer=tf.keras.regularizers.l2(weight_decay),
         name="weights",
     )
 
@@ -562,7 +562,7 @@ def fc(
             initializer=init,
             shape=[out_depth],
             dtype=tf.float32,
-            regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+            regularizer=tf.keras.regularizers.l2(weight_decay),
             name="bias",
         )
 

@@ -267,7 +267,7 @@ class ReciprocalGateCell(ConvRNNCell):
                             ],
                             dtype=dtype,
                             initializer=self._kernel_initializer,
-                            regularizer=tf.contrib.layers.l2_regularizer(
+                            regularizer=tf.keras.regularizers.l2(
                                 self._weight_decay
                             ),
                         )
@@ -304,7 +304,7 @@ class ReciprocalGateCell(ConvRNNCell):
                             ],
                             dtype=dtype,
                             initializer=self._kernel_initializer,
-                            regularizer=tf.contrib.layers.l2_regularizer(
+                            regularizer=tf.keras.regularizers.l2(
                                 self._weight_decay
                             ),
                         )
@@ -327,7 +327,7 @@ class ReciprocalGateCell(ConvRNNCell):
                             ],
                             dtype=dtype,
                             initializer=self._kernel_initializer,
-                            regularizer=tf.contrib.layers.l2_regularizer(
+                            regularizer=tf.keras.regularizers.l2(
                                 self._weight_decay
                             ),
                         )
@@ -368,7 +368,7 @@ class ReciprocalGateCell(ConvRNNCell):
                                 ],
                                 dtype=dtype,
                                 initializer=self._kernel_initializer,
-                                regularizer=tf.contrib.layers.l2_regularizer(
+                                regularizer=tf.keras.regularizers.l2(
                                     self._weight_decay
                                 ),
                             )
@@ -411,7 +411,7 @@ class ReciprocalGateCell(ConvRNNCell):
                                 ],
                                 dtype=dtype,
                                 initializer=self._kernel_initializer,
-                                regularizer=tf.contrib.layers.l2_regularizer(
+                                regularizer=tf.keras.regularizers.l2(
                                     self._weight_decay
                                 ),
                             )
@@ -456,7 +456,7 @@ class ReciprocalGateCell(ConvRNNCell):
                                 ],
                                 dtype=dtype,
                                 initializer=self._kernel_initializer,
-                                regularizer=tf.contrib.layers.l2_regularizer(
+                                regularizer=tf.keras.regularizers.l2(
                                     self._weight_decay
                                 ),
                             )
@@ -551,7 +551,7 @@ class ReciprocalGateCell(ConvRNNCell):
                             ],
                             dtype=dtype,
                             initializer=self._kernel_initializer,
-                            regularizer=tf.contrib.layers.l2_regularizer(
+                            regularizer=tf.keras.regularizers.l2(
                                 self._weight_decay
                             ),
                         )
@@ -572,7 +572,7 @@ class ReciprocalGateCell(ConvRNNCell):
                             ],
                             dtype=dtype,
                             initializer=self._kernel_initializer,
-                            regularizer=tf.contrib.layers.l2_regularizer(
+                            regularizer=tf.keras.regularizers.l2(
                                 self._weight_decay
                             ),
                         )
@@ -595,7 +595,7 @@ class ReciprocalGateCell(ConvRNNCell):
                             ],
                             dtype=dtype,
                             initializer=self._kernel_initializer,
-                            regularizer=tf.contrib.layers.l2_regularizer(
+                            regularizer=tf.keras.regularizers.l2(
                                 self._weight_decay
                             ),
                         )
@@ -616,7 +616,7 @@ class ReciprocalGateCell(ConvRNNCell):
                             ],
                             dtype=dtype,
                             initializer=self._kernel_initializer,
-                            regularizer=tf.contrib.layers.l2_regularizer(
+                            regularizer=tf.keras.regularizers.l2(
                                 self._weight_decay
                             ),
                         )
@@ -657,7 +657,7 @@ class ReciprocalGateCell(ConvRNNCell):
                         ],
                         dtype=dtype,
                         initializer=self._kernel_initializer,
-                        regularizer=tf.contrib.layers.l2_regularizer(
+                        regularizer=tf.keras.regularizers.l2(
                             self._weight_decay
                         ),
                     )
@@ -681,7 +681,7 @@ class ReciprocalGateCell(ConvRNNCell):
                             ],
                             dtype=dtype,
                             initializer=self._kernel_initializer,
-                            regularizer=tf.contrib.layers.l2_regularizer(
+                            regularizer=tf.keras.regularizers.l2(
                                 self._weight_decay
                             ),
                         )
@@ -715,7 +715,7 @@ class ReciprocalGateCell(ConvRNNCell):
                             ],
                             dtype=dtype,
                             initializer=self._kernel_initializer,
-                            regularizer=tf.contrib.layers.l2_regularizer(
+                            regularizer=tf.keras.regularizers.l2(
                                 self._weight_decay
                             ),
                         )
@@ -792,7 +792,7 @@ class ReciprocalGateCell(ConvRNNCell):
                             ],
                             dtype=dtype,
                             initializer=self._kernel_initializer,
-                            regularizer=tf.contrib.layers.l2_regularizer(
+                            regularizer=tf.keras.regularizers.l2(
                                 self._weight_decay
                             ),
                         )
@@ -895,7 +895,7 @@ class ReciprocalGateCell(ConvRNNCell):
                         ],
                         dtype=dtype,
                         initializer=self._kernel_initializer,
-                        regularizer=tf.contrib.layers.l2_regularizer(
+                        regularizer=tf.keras.regularizers.l2(
                             self._weight_decay
                         ),
                     )
@@ -916,7 +916,7 @@ class ReciprocalGateCell(ConvRNNCell):
                         ],
                         dtype=dtype,
                         initializer=self._kernel_initializer,
-                        regularizer=tf.contrib.layers.l2_regularizer(
+                        regularizer=tf.keras.regularizers.l2(
                             self._weight_decay
                         ),
                     )
@@ -938,7 +938,7 @@ class ReciprocalGateCell(ConvRNNCell):
                         ],
                         dtype=dtype,
                         initializer=self._kernel_initializer,
-                        regularizer=tf.contrib.layers.l2_regularizer(
+                        regularizer=tf.keras.regularizers.l2(
                             self._weight_decay
                         ),
                     )
@@ -971,7 +971,7 @@ class ReciprocalGateCell(ConvRNNCell):
                             ],
                             dtype=dtype,
                             initializer=self._kernel_initializer,
-                            regularizer=tf.contrib.layers.l2_regularizer(
+                            regularizer=tf.keras.regularizers.l2(
                                 self._weight_decay
                             ),
                         )
@@ -1238,7 +1238,7 @@ def _conv(
             [filter_size[0], filter_size[1], in_depth, out_depth],
             dtype=dtype,
             initializer=kernel_initializer,
-            regularizer=tf.contrib.layers.l2_regularizer(kernel_regularizer),
+            regularizer=tf.keras.regularizers.l2(kernel_regularizer),
         )
 
         out = tf.nn.conv2d(
@@ -1253,6 +1253,6 @@ def _conv(
             [out_depth],
             dtype=dtype,
             initializer=bias_initializer,
-            regularizer=tf.contrib.layers.l2_regularizer(bias_regularizer),
+            regularizer=tf.keras.regularizers.l2(bias_regularizer),
         )
         return out + bias_term

@@ -228,8 +228,8 @@ def mlp_decoder(logits, layers_list=[250], trainable=False, weight_decay=None):
         inputs,
         num_outputs=int(num_neurons),
         activation_fn=None,
-        weights_regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
-        biases_regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+        weights_regularizer=tf.keras.regularizers.l2(weight_decay),
+        biases_regularizer=tf.keras.regularizers.l2(weight_decay),
         trainable=True,
         scope="mlp_decoder/fc_final",
     )
@@ -271,8 +271,8 @@ def conv1d_decoder(
             data_format="channels_last",
             activation=activation_conv,
             use_bias=True,
-            kernel_regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
-            bias_regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+            kernel_regularizer=tf.keras.regularizers.l2(weight_decay),
+            bias_regularizer=tf.keras.regularizers.l2(weight_decay),
             trainable=True,
             name="conv1_decoder/c_" + str(w),
         )
@@ -294,8 +294,8 @@ def conv1d_decoder(
         agg_out,
         num_outputs=int(num_neurons),
         activation_fn=activation_fc,
-        weights_regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
-        biases_regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+        weights_regularizer=tf.keras.regularizers.l2(weight_decay),
+        biases_regularizer=tf.keras.regularizers.l2(weight_decay),
         trainable=True,
         scope="conv1_decoder/fc_final",
     )

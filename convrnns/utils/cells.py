@@ -1206,7 +1206,7 @@ class ReciprocalGateCell(ConvRNNCell):
                 [filter_size[0], filter_size[1], in_depth, out_depth],
                 dtype=dtype,
                 initializer=kernel_initializer,
-                regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+                regularizer=tf.keras.regularizers.l2(weight_decay),
             )
 
             out = tf.nn.conv2d(inp, kernel, strides=[1, 1, 1, 1], padding="SAME")
@@ -1303,7 +1303,7 @@ class ReciprocalGateCell(ConvRNNCell):
                 [ksize[0], ksize[1], in_depth, ch_mult],
                 dtype=dtype,
                 initializer=kernel_initializer,
-                regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+                regularizer=tf.keras.regularizers.l2(weight_decay),
             )
 
             pointwise_filter = tf.get_variable(
@@ -1311,7 +1311,7 @@ class ReciprocalGateCell(ConvRNNCell):
                 [1, 1, in_depth * ch_mult, out_depth],
                 dtype=dtype,
                 initializer=kernel_initializer,
-                regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+                regularizer=tf.keras.regularizers.l2(weight_decay),
             )
 
             if repeat:
@@ -1320,7 +1320,7 @@ class ReciprocalGateCell(ConvRNNCell):
                     [ksize[0], ksize[1], in_depth, ch_mult],
                     dtype=dtype,
                     initializer=kernel_initializer,
-                    regularizer=tf.contrib.layers.l2_regularizer(weight_decay),
+                    regularizer=tf.keras.regularizers.l2(weight_decay),
                 )
                 inp = tf.nn.depthwise_conv2d(
                     inp,
@@ -1642,7 +1642,7 @@ class ReciprocalGateCell(ConvRNNCell):
                             ],
                             dtype=dtype,
                             initializer=self._kernel_initializer,
-                            regularizer=tf.contrib.layers.l2_regularizer(
+                            regularizer=tf.keras.regularizers.l2(
                                 self._weight_decay
                             ),
                         )
