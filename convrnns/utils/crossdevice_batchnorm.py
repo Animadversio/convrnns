@@ -1,9 +1,12 @@
 import re
 import six
-import tensorflow as tf
-from tensorflow.contrib.tpu.python.ops import tpu_ops
-from tensorflow.contrib.tpu.python.tpu import tpu_function
-
+import tensorflow.compat.v1 as tf
+try:
+    from tensorflow.contrib.tpu.python.ops import tpu_ops
+    from tensorflow.contrib.tpu.python.tpu import tpu_function
+except:
+    print("TPU loading fail.")
+    pass
 COPY_NAME_SCOPE = "__var_copy_"
 
 

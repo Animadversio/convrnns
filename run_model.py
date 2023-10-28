@@ -1,5 +1,5 @@
 import os
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 import numpy as np
 from convrnns.utils.loader import get_restore_vars, MODEL_TO_KWARGS
 from convrnns.models.model_func import model_func

@@ -1,7 +1,7 @@
 from __future__ import absolute_import, division, print_function
 import copy, six
-import tensorflow as tf
-from tensorflow.contrib.rnn import LSTMStateTuple, RNNCell
+import tensorflow.compat.v1 as tf
+from tensorflow.compat.v1.nn.rnn_cell import LSTMStateTuple, RNNCell
 from convrnns.utils import model_tool
 from convrnns.utils.main import _get_func_from_kwargs
 from convrnns.utils.cell_utils import (

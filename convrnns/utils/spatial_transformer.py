@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 
 def transformer(U, theta, out_size, name="SpatialTransformer", **kwargs):

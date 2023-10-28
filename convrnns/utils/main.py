@@ -6,7 +6,7 @@ import copy
 import math
 import convrnns
 import networkx as nx
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 import numpy as np
 
 
@@ -29,7 +29,8 @@ def _get_func_from_kwargs(function, **kwargs):
                     try:
                         f = getattr(tf, function)
                     except:
-                        f = getattr(tf.contrib.layers, function)
+                        # f = getattr(tf.contrib.layers, function)
+                        f = getattr(tf.layers, function)
     return f, kwargs
 
 

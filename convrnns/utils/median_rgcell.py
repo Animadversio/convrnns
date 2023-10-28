@@ -1,5 +1,5 @@
-import tensorflow as tf
-from tensorflow.contrib.rnn import LSTMStateTuple
+import tensorflow.compat.v1 as tf
+from tensorflow.compat.v1.nn.rnn_cell import LSTMStateTuple
 from convrnns.utils import model_tool
 from convrnns.utils.cell_utils import memory, harbor, _ds_conv, residual_add
 from convrnns.utils.cells import ConvRNNCell

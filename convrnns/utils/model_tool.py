@@ -1,7 +1,7 @@
 from __future__ import absolute_import, division, print_function
 
 import copy
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 from convrnns.utils.crossdevice_batchnorm import (
     crossgpu_batch_norm,
     CRTPUBatchNormalization,
