@@ -125,12 +125,13 @@ for chan_id in range(channel_range[0], channel_range[1]):
         # main loop of Evolution.
         new_codes = np.random.randn(1, 4096)
         optimizer = CholeskyCMAES(space_dimen=4096, init_code=new_codes, init_sigma=3.0,)
-        savedict = dict({"scores": [], "scores_dyn": [], "codes": [], "generations": []})
+        # savedict = dict({"scores": [], "scores_dyn": [], "generations": [], "codes": [], })
+        savedict = dict({"scores": [], "scores_dyn": [], "generations": [], "best_codes": []}) # "mean_codes": [],
         best_imgs = []
         for block_i in range(steps):
             n_imgs = len(new_codes)
             latent_code = torch.from_numpy(np.array(new_codes)).float()
-            savedict["codes"].append(new_codes)
+            # savedict["mean_codes"].append(new_codes.mean(axis=0, keepdims=True))
             imgs = G.visualize(latent_code.cuda()).detach().cpu()
             # imgs = G.visualize(latent_code).detach()
             imgs_pp = F.interpolate(imgs, size=(224, 224), mode='bilinear', align_corners=False)
@@ -166,6 +167,7 @@ for chan_id in range(channel_range[0], channel_range[1]):
             savedict["scores_dyn"].append(scores_dyn.transpose(1, 0)) # batch, time
             savedict["generations"].append([block_i]*n_imgs)
             best_imgs.append(imgs[np.argmax(scores), :, :, :])
+            savedict["best_codes"].append(new_codes[np.argmax(scores), :][np.newaxis])
             torch.cuda.empty_cache()
 
         for k in savedict:
