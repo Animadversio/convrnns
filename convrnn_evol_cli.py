@@ -75,9 +75,11 @@ parser.add_argument(
     help="channel end",
 )
 cli_args = parser.parse_args()
+channel_range = (cli_args.chan_start, cli_args.chan_end)
 args = edict({
     # "model_name": "rgc_intermediate", #'rgc_intermediate',  # Required argument, so no default value is effectively used
     # "out_layers": 'conv2',
+    "model_name": cli_args.model_name,
     "gpu": None,
     "ckpt_dir": "/n/holylabs/LABS/kempner_fellows/Users/binxuwang/Github/convrnns/ckpts", # "/home/biw905/Github/convrnns/ckpts",#
     "image_pres": "default",
@@ -87,7 +89,6 @@ args = edict({
     "include_logits": False
 })
 
-channel_range = (cli_args.chan_start, cli_args.chan_end)
 G = upconvGAN("fc6").eval().cuda()
 G.requires_grad_(False)
 
