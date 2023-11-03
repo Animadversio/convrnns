@@ -128,8 +128,7 @@ for chan_id in range(10):
         savedict["scores_dyn"].append(scores_dyn.transpose(1, 0)) # batch, time
         savedict["generations"].append([block_i]*n_imgs)
         best_imgs.append(imgs[np.argmax(scores), :, :, :])
-        # raise ValueError
-            # torch.cuda.empty_cache()
+        torch.cuda.empty_cache()
 
     for k in savedict:
         savedict[k] = np.concatenate(savedict[k], axis=0)

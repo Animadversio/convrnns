@@ -141,10 +141,11 @@ for chan_id in range(channel_range[0], channel_range[1]):
             scores_dyn = []
             scores = []
             for n_csr in range(0, n_imgs, num_batch):
-                if n_imgs < num_batch:
-                    imgs_pp_batch = np.concatenate([imgs_pp_np, np.zeros((num_batch - n_imgs, 224, 224, 3))], axis=0)
+                n_end = min(n_imgs, n_csr + num_batch)
+                if n_end - n_csr < num_batch:
+                    imgs_pp_batch = np.concatenate([imgs_pp_np[n_csr:n_end, :], np.zeros((num_batch - (n_end - n_csr), 224, 224, 3))], axis=0)
                 else:
-                    imgs_pp_batch = imgs_pp_np[n_csr:n_csr+num_batch, :]
+                    imgs_pp_batch = imgs_pp_np[n_csr:n_end, :]
                 # Record activations
                 # scores = scorer.score_tsr(imgs)
                 y_eval = sess.run(y, feed_dict={inputs: imgs_pp_batch})
@@ -152,7 +153,7 @@ for chan_id in range(channel_range[0], channel_range[1]):
                 time_pnts = list(y_eval[layername].keys()) # [Tpnts,]
                 acttsr = np.array([*y_eval[layername].values()]) # [Tpnts, batch, H, W, C, ]
                 Hcent, Wcent = acttsr.shape[2] // 2, acttsr.shape[3] // 2
-                scores_dyn_batch = acttsr[:, :min(n_imgs, num_batch), Hcent, Wcent, chan_id]  # [T, n_imgs,]
+                scores_dyn_batch = acttsr[:, :(n_end - n_csr), Hcent, Wcent, chan_id]  # [T, n_imgs,]
                 scores_batch = scores_dyn_batch[time_idx, :]  # [n_imgs,]
                 scores_dyn.append(scores_dyn_batch)
                 scores.append(scores_batch)
