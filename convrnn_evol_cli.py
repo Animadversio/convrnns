@@ -126,7 +126,7 @@ for chan_id in range(channel_range[0], channel_range[1]):
         new_codes = np.random.randn(1, 4096)
         optimizer = CholeskyCMAES(space_dimen=4096, init_code=new_codes, init_sigma=3.0,)
         # savedict = dict({"scores": [], "scores_dyn": [], "generations": [], "codes": [], })
-        savedict = dict({"scores": [], "scores_dyn": [], "generations": [], "best_codes": []}) # "mean_codes": [],
+        savedict = dict({"scores": [], "scores_dyn": [], "generations": [], "best_codes": []})
         best_imgs = []
         for block_i in range(steps):
             n_imgs = len(new_codes)
