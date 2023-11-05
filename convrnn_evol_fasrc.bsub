@@ -4,7 +4,7 @@
 #SBATCH -c 16               # Number of cores (-c)
 #SBATCH --mem=24G           # Memory pool for all cores (see also --mem-per-cpu)
 #SBATCH --gres=gpu:1
-#SBATCH --array 1-11
+#SBATCH --array 12-21
 #SBATCH -o convrnn_evol_%A_%a.out  # File to which STDOUT will be written, %j inserts jobid
 #SBATCH -e convrnn_evol_%A_%a.err  # File to which STDERR will be written, %j inserts jobid
 #SBATCH --mail-user=binxu_wang@hms.harvard.edu
@@ -22,6 +22,16 @@ param_list=\
 --model_name rgc_intermediate --layername conv9 --chan_start 0 --chan_end 25
 --model_name rgc_intermediate --layername conv10 --chan_start 0 --chan_end 25
 --model_name rgc_intermediate --layername imnetds --chan_start 0 --chan_end 25
+--model_name rgc_intermediate --layername conv1 --chan_start 25 --chan_end 50
+--model_name rgc_intermediate --layername conv2 --chan_start 25 --chan_end 50
+--model_name rgc_intermediate --layername conv3 --chan_start 25 --chan_end 50
+--model_name rgc_intermediate --layername conv4 --chan_start 25 --chan_end 50
+--model_name rgc_intermediate --layername conv5 --chan_start 25 --chan_end 50
+--model_name rgc_intermediate --layername conv6 --chan_start 25 --chan_end 50
+--model_name rgc_intermediate --layername conv7 --chan_start 25 --chan_end 50
+--model_name rgc_intermediate --layername conv8 --chan_start 25 --chan_end 50
+--model_name rgc_intermediate --layername conv9 --chan_start 25 --chan_end 50
+--model_name rgc_intermediate --layername conv10 --chan_start 25 --chan_end 50
 '
 
 export param_name="$(echo "$param_list" | head -n $SLURM_ARRAY_TASK_ID | tail -1)"
