@@ -24,3 +24,5 @@ for T in range(savedict["scores_dyn"].shape[1]):
     # plt.scatter(savedict["generations"], savedict["scores_dyn"])
 plt.legend()
 plt.show()
+
+#%%
