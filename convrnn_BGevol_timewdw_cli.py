@@ -119,7 +119,8 @@ parser.add_argument("--timewdws",
     nargs='+',
     default=[(1,16)],  # "HessCMA",
     help="time window counted in objective for running evolution, "
-         "input as a list of tuples '(1, 16)', '(5,16)'"
+         "input as a list of tuples, no space between the int in the tuple. "
+         "space allowed between tuples e.g. 1,16 5,16"
 )
 parser.add_argument(
     "--reps",
@@ -200,8 +201,8 @@ for timewdw in timewdws:
     # this will be the slice used for averaging the score.
     timewdws_idxs.append((wdw_start - min_active_time, wdw_end - min_active_time + 1))
 
-print(timewdws_processed)
-print(timewdws_idxs)
+print("Time windows under objectives", timewdws_processed)
+print("Indices slice for each window", timewdws_idxs)
 #%% time bin score
 savedir = r"/n/holylabs/LABS/kempner_fellows/Users/binxuwang/DL_Projects/convrnn_Evol"
 expdir = join(savedir, f"{args.model_name}-{layername}_timewdw")
