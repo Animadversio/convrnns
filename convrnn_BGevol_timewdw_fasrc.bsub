@@ -11,26 +11,26 @@
 
 echo "$SLURM_ARRAY_TASK_ID"
 param_list=\
-'--model_name rgc_intermediate --layername conv1 --timewdws "(1, 16)" --chan_start 0 --chan_end 50 --G BigGAN --optim CholCMA --reps 5
---model_name rgc_intermediate --layername conv2 --timewdws "(1, 16)" --chan_start 0 --chan_end 50 --G BigGAN --optim CholCMA --reps 5
---model_name rgc_intermediate --layername conv3 --timewdws "(1, 16)" --chan_start 0 --chan_end 50 --G BigGAN --optim CholCMA --reps 5
---model_name rgc_intermediate --layername conv4 --timewdws "(1, 16)" --chan_start 0 --chan_end 50 --G BigGAN --optim CholCMA --reps 5
---model_name rgc_intermediate --layername conv5 --timewdws "(1, 16)" --chan_start 0 --chan_end 50 --G BigGAN --optim CholCMA --reps 5
---model_name rgc_intermediate --layername conv6 --timewdws "(1, 16)" --chan_start 0 --chan_end 50 --G BigGAN --optim CholCMA --reps 5
---model_name rgc_intermediate --layername conv7 --timewdws "(1, 16)" --chan_start 0 --chan_end 50 --G BigGAN --optim CholCMA --reps 5
---model_name rgc_intermediate --layername conv8 --timewdws "(1, 16)" --chan_start 0 --chan_end 50 --G BigGAN --optim CholCMA --reps 5
---model_name rgc_intermediate --layername conv9 --timewdws "(1, 16)" --chan_start 0 --chan_end 50 --G BigGAN --optim CholCMA --reps 5
---model_name rgc_intermediate --layername conv10 --timewdws "(1, 16)" --chan_start 0 --chan_end 50 --G BigGAN --optim CholCMA --reps 5
---model_name rgc_intermediate --layername conv1 --timewdws "(1, 16)" --chan_start 0 --chan_end 50 --G fc6 --optim CholCMA --reps 5
---model_name rgc_intermediate --layername conv2 --timewdws "(1, 16)" --chan_start 0 --chan_end 50 --G fc6 --optim CholCMA --reps 5
---model_name rgc_intermediate --layername conv3 --timewdws "(1, 16)" --chan_start 0 --chan_end 50 --G fc6 --optim CholCMA --reps 5
---model_name rgc_intermediate --layername conv4 --timewdws "(1, 16)" --chan_start 0 --chan_end 50 --G fc6 --optim CholCMA --reps 5
---model_name rgc_intermediate --layername conv5 --timewdws "(1, 16)" --chan_start 0 --chan_end 50 --G fc6 --optim CholCMA --reps 5
---model_name rgc_intermediate --layername conv6 --timewdws "(1, 16)" --chan_start 0 --chan_end 50 --G fc6 --optim CholCMA --reps 5
---model_name rgc_intermediate --layername conv7 --timewdws "(1, 16)" --chan_start 0 --chan_end 50 --G fc6 --optim CholCMA --reps 5
---model_name rgc_intermediate --layername conv8 --timewdws "(1, 16)" --chan_start 0 --chan_end 50 --G fc6 --optim CholCMA --reps 5
---model_name rgc_intermediate --layername conv9 --timewdws "(1, 16)" --chan_start 0 --chan_end 50 --G fc6 --optim CholCMA --reps 5
---model_name rgc_intermediate --layername conv10 --timewdws "(1, 16)" --chan_start 0 --chan_end 50 --G fc6 --optim CholCMA --reps 5
+'--model_name rgc_intermediate --layername conv1 --timewdws  1,16  --chan_start 0 --chan_end 50 --G BigGAN --optim CholCMA --reps 5
+--model_name rgc_intermediate --layername conv2 --timewdws  1,16  --chan_start 0 --chan_end 50 --G BigGAN --optim CholCMA --reps 5
+--model_name rgc_intermediate --layername conv3 --timewdws  1,16  --chan_start 0 --chan_end 50 --G BigGAN --optim CholCMA --reps 5
+--model_name rgc_intermediate --layername conv4 --timewdws  1,16  --chan_start 0 --chan_end 50 --G BigGAN --optim CholCMA --reps 5
+--model_name rgc_intermediate --layername conv5 --timewdws  1,16  --chan_start 0 --chan_end 50 --G BigGAN --optim CholCMA --reps 5
+--model_name rgc_intermediate --layername conv6 --timewdws  1,16  --chan_start 0 --chan_end 50 --G BigGAN --optim CholCMA --reps 5
+--model_name rgc_intermediate --layername conv7 --timewdws  1,16  --chan_start 0 --chan_end 50 --G BigGAN --optim CholCMA --reps 5
+--model_name rgc_intermediate --layername conv8 --timewdws  1,16  --chan_start 0 --chan_end 50 --G BigGAN --optim CholCMA --reps 5
+--model_name rgc_intermediate --layername conv9 --timewdws  1,16  --chan_start 0 --chan_end 50 --G BigGAN --optim CholCMA --reps 5
+--model_name rgc_intermediate --layername conv10 --timewdws  1,16  --chan_start 0 --chan_end 50 --G BigGAN --optim CholCMA --reps 5
+--model_name rgc_intermediate --layername conv1 --timewdws  1,16  --chan_start 0 --chan_end 50 --G fc6 --optim CholCMA --reps 5
+--model_name rgc_intermediate --layername conv2 --timewdws  1,16  --chan_start 0 --chan_end 50 --G fc6 --optim CholCMA --reps 5
+--model_name rgc_intermediate --layername conv3 --timewdws  1,16  --chan_start 0 --chan_end 50 --G fc6 --optim CholCMA --reps 5
+--model_name rgc_intermediate --layername conv4 --timewdws  1,16  --chan_start 0 --chan_end 50 --G fc6 --optim CholCMA --reps 5
+--model_name rgc_intermediate --layername conv5 --timewdws  1,16  --chan_start 0 --chan_end 50 --G fc6 --optim CholCMA --reps 5
+--model_name rgc_intermediate --layername conv6 --timewdws  1,16  --chan_start 0 --chan_end 50 --G fc6 --optim CholCMA --reps 5
+--model_name rgc_intermediate --layername conv7 --timewdws  1,16  --chan_start 0 --chan_end 50 --G fc6 --optim CholCMA --reps 5
+--model_name rgc_intermediate --layername conv8 --timewdws  1,16  --chan_start 0 --chan_end 50 --G fc6 --optim CholCMA --reps 5
+--model_name rgc_intermediate --layername conv9 --timewdws  1,16  --chan_start 0 --chan_end 50 --G fc6 --optim CholCMA --reps 5
+--model_name rgc_intermediate --layername conv10 --timewdws  1,16  --chan_start 0 --chan_end 50 --G fc6 --optim CholCMA --reps 5
 '
 
 export param_name="$(echo "$param_list" | head -n $SLURM_ARRAY_TASK_ID | tail -1)"

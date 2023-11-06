@@ -51,18 +51,24 @@ def print_keys_recursive(d, indent=0):
 # sys.path.append("/home/biw905/Github/convrnns")
 import argparse
 import ast
-def parse_int_tuple(string, element_type=int, length=2):
+# def parse_int_tuple(string, element_type=int, length=2):
+#     try:
+#         # This will safely evaluate the string into a Python literal
+#         val = ast.literal_eval(string)
+#         if (isinstance(val, tuple) and
+#                 len(val) == length and
+#         all(isinstance(num, element_type) for num in val)):
+#             return val
+#         else:
+#             raise argparse.ArgumentTypeError("Each argument must be a tuple of two integers, e.g., (5, 16)")
+#     except (ValueError, SyntaxError):
+#         raise argparse.ArgumentTypeError("Each argument must be a tuple of two integers, e.g., (5, 16)")
+def parse_int_tuple(string):
     try:
-        # This will safely evaluate the string into a Python literal
-        val = ast.literal_eval(string)
-        if (isinstance(val, tuple) and
-                len(val) == length and
-        all(isinstance(num, element_type) for num in val)):
-            return val
-        else:
-            raise argparse.ArgumentTypeError("Each argument must be a tuple of two integers, e.g., (5, 16)")
-    except (ValueError, SyntaxError):
-        raise argparse.ArgumentTypeError("Each argument must be a tuple of two integers, e.g., (5, 16)")
+        x, y = map(int, string.split(','))
+        return x, y
+    except:
+        raise argparse.ArgumentTypeError("Input must be a comma-separated pair of integers.")
 
 
 parser = argparse.ArgumentParser()
@@ -111,7 +117,7 @@ parser.add_argument("--optim",
 parser.add_argument("--timewdws",
     type=parse_int_tuple,
     nargs='+',
-    default=[(1, 16)],  # "HessCMA",
+    default=[(1,16)],  # "HessCMA",
     help="time window counted in objective for running evolution, "
          "input as a list of tuples '(1, 16)', '(5,16)'"
 )
